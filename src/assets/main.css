@@ -1,0 +1,329 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.wrappers
+{
+    width:1400px;
+    margin: auto;
+}
+
+#logo
+{
+    border-radius: 50%;
+    width:80px;
+    height:80px;
+}
+
+.d-flex
+{
+    display: flex;
+}
+
+.d-flex__between
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn
+{
+    padding: 15px 15px;
+    background-color:green;
+    color: #fff;
+    border-radius:4px;
+    outline:none;
+    border:none;
+    cursor: pointer;
+}
+
+.input
+{
+    width:542px;
+    height:50px;
+    outline: none;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border:2px solid #000;
+    border-left:0;
+    padding-left:16px;
+}
+
+#icon-search
+{   
+    width:50px;
+    height:50px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border:2px solid #000;
+}
+
+.model-login
+{
+    position: fixed;
+    right:100px;
+}
+
+.model-main{
+    padding:20px 12px;
+    background-color: green;
+    color:#fff;
+    cursor: pointer;
+}
+
+.avatar{
+    padding:30px;
+    border:1px solid #000;
+    border-radius:50%;
+    margin: 0 20px;
+}
+
+.d-flex__center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-left{
+    flex: 2;
+    background-color: #252636;
+    min-height:100vh;
+    position: fixed;
+    width:20%;
+}
+
+.content-right{
+    margin-left: auto;
+    width: 80%;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.info-people{
+    padding: 30px 15px;
+}
+
+.nav-center
+{
+
+}
+
+.nav-center>li:nth-child(1)
+{
+    padding-top:40px;
+}
+.nav-center>li
+{
+    padding:20px 0 20px 70px;
+    color:#9CA3AF;
+    cursor: pointer;
+    text-transform:none;
+    list-style: none;
+}
+
+.hr
+{
+    background-color:#9CA3AF;
+    width:100%;
+    height:1px;
+}
+
+.content-right__top{
+    background-color: #6f6486;
+    padding: 37px 20px; 
+}
+
+.content-blockchain__main{
+    background-color: #2a2b3d;
+    min-height: 100vh;
+    padding-bottom: 30px;
+}
+
+.col{
+    width:85%;
+    margin:left;
+    background-color: #313348;
+    padding: 20px;
+}
+
+
+.col>li{
+    list-style: none;
+    text-transform: uppercase;
+    flex:1;
+    font-size:15px;
+}
+
+.col-style{
+    margin-top:10px;
+    color : #9CA3AF;
+}
+
+.viewAll,
+.edits{
+    background-color: #2a2b3d;
+    height:100%;
+}
+
+.form-edits{
+    width:80%;
+    margin:auto;
+}
+
+.enter-edits{
+    width: 100%;
+    margin:20px 0;
+    padding: 15px;
+    outline: none;
+}
+
+.edits-gender
+{
+     margin-left:15px; 
+}
+
+.viewAll-main{
+    padding: 30px 100px;
+}
+
+.view-model{
+    margin:30px 0;
+}
+
+.bg-view{
+    background-color: #313348 ;
+    padding:30px 0;
+    margin:0 2px;
+    min-height: 920px;
+}
+
+.bg-view>p{
+    color:#fff;
+    padding:30px;
+}
+
+.icon-lot{
+    width:30px;
+    height:30px;
+}
+
+.banner{
+    width:100%;
+    height: 400px;
+}
+
+.d-flex__end{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav{
+    padding-left:20px;
+}
+
+.nav-main >li{
+    list-style: none;
+    padding: 18px 15px;
+    background-color:#5e6e7f;
+    margin-right:5px;
+    color: #fff; 
+    cursor: pointer;
+
+}
+
+.nav-main >li >a{
+    text-decoration: none;
+    color: #FFF;
+}
+
+.header{
+    background: #eeeeee;
+}
+
+.bg-header{
+    background:#fff;
+}
+
+.model-admin{
+    position: fixed;
+    min-height:100vh;
+    width:300px;
+    z-indeX:9999;
+    background-color: #252636;
+    right:0;
+    -webkit-transition:all 0.5s linear;
+    transform: translateX(100%);
+    transition: all 0.5s linear;
+}
+
+.model-word{
+    color:#fff;
+    margin:30px 30px;
+    cursor: pointer;
+}
+
+#closeModel
+{
+    width:100px;
+    position: relative;
+    cursor: pointer;
+}
+
+.search-admin{
+    width:80%;
+    border:none;
+    outline: none;
+    padding:18px 15px;
+    margin:auto;
+    margin:30px 0 0 30px;
+    border-radius: 4px;
+    background: #313348;
+    color:#9CA3AF;
+}
+
+.search-admin:focus{
+    transform: translateY(10%);
+    transition: all 0.25s linear;
+    background:#fff;
+    color:#000;
+}
+
+.model-word:hover{
+    color:greenyellow;
+}
+
+.showGoToTop{
+    position: fixed;
+    bottom:50px;
+    right: 50px;
+    cursor: pointer;
+}
+
+.Modal{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.Modal-main{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    padding:30px;
+}
