@@ -36,32 +36,31 @@ const Header = (props) => {
   
 
 
-  const connectWalletHandler = async () => {
-    console.log("OK");
-    if (window.ethereum && window.ethereum.isMetaMask) {
-      // kiểm tra trình duyệt có metamask chưa
-      setIsShowModalLoading(true)
-      try {
-        const accounts = await window.ethereum.request({
+  const connectWalletHandler = async () => { //async hàm bất đồng bộ hóa trả về promise
+  
+
+    if (window.ethereum && window.ethereum.isMetaMask) {    // kiểm tra trình duyệt có metamask chưa
+      setIsShowModalLoading(true) // nếu có thì set setIsShowModalLoading bằng true
+      try { // thực hiện khi trình duyệt đã có metamask
+        const accounts = await window.ethereum.request({  // yêu cầu người dùng đăng nhập
           method: "eth_requestAccounts",
-        }); // yêu cầu người dùng truy cập tài khoản
-        const account = accounts[0];
-        localStorage.setItem("account", account);
-        props.loginSuccess();
-      } catch (
+        }); 
+        const account = accounts[0];  // lấy account từ metamask
+        localStorage.setItem("account", account); //set biến account vào trong localStorage
+        props.loginSuccess(); // thực hiện hàm loginSuccess
+      } catch (   // catch là thực hiện lỗi nếu không đăng nhập được 
         error // Nếu lỗi thực hiện câu lệnh bên trong
       ) {
-        console.log(error);
       }
     }
-    else{
-      setIsShowModalError(true)
+    else{   // nếu như trình duyệt không có metamask
+      setIsShowModalError(true) // thực hiện hàm setIsShowModalError bằng true
     }
   };
 
-  const handleSymptom = () => {
-    const Symptom = document.querySelector("#symptom");
-  };
+  const handleSymptom = () => { window.scrollTo({top:1000, behavior:"smooth"})}
+  const handleCaMac =() => {window.scrollTo({top:2000, behavior:"smooth"})}
+  const handleNews =() => {window.scrollTo({top:2000, behavior:"smooth"})}
 
   return (
     <div className="header">
@@ -106,13 +105,15 @@ const Header = (props) => {
             <div className="nav">
               <ul className="nav-main d-flex__center">
                 <li onClick={handleSymptom}>
-                  <a href="#content-1">TRIỆU CHỨNG</a>
+                TRIỆU CHỨNG
                 </li>
-                <li>
-                  <a href="#content-2">CA MẮC</a>
+                <li onClick={handleCaMac}>
+                 CA MẮC
                 </li>
-                <li>
-                  <a href="#content-3">TIN TỨC</a>
+                <li
+                onClick={handleNews}
+                >
+                 TIN TỨC
                 </li>
                 <li>FAQ</li>
               </ul>
@@ -420,10 +421,12 @@ const Header = (props) => {
             </a>
           </div>
       </Modal>}
-      {isShowModalLoading && <Modal>
+
+      {/* Lúc đăng nhập */}
+      {isShowModalLoading && <Modal>  
         <h1 style={{margin:"10px 0"}}>Đang đăng nhập</h1>
           <lottie-player
-            src="https://assets1.lottiefiles.com/packages/lf20_szlepvdh.json"
+            src="https://assets10.lottiefiles.com/packages/lf20_4jyai6ec.json"
             loop
             autoplay
             style={{ width: "200px", margin:"auto" }}

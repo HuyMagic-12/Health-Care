@@ -5,7 +5,7 @@ import Modal from "../component/modal";
 function EventAdd(props) {
   
   var arrayAdd = []
-  if(props.injected < 6){
+  if(props.injected < 6){ 
   for(let i = 1 ; i <= props.injected ; i++ ){
     arrayAdd.push(
       <div key={i}>
@@ -37,6 +37,7 @@ function EventAdd(props) {
       </div>
     )
   }
+
 } 
   else{
     arrayAdd.push(

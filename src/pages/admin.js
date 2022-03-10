@@ -144,6 +144,7 @@ const Admin = () => {
     setDataUser(dataNew);
   }
 
+  // gọi 
   const handleSubmit = (e) =>{
     e.preventDefault();
     if(searchInput){
@@ -163,10 +164,13 @@ const Admin = () => {
       setConnection(covac);
     }
   }
-  const handleLogout = () =>{
-    localStorage.removeItem("account");
-    window.location.reload()
+
+
+  const handleLogout = () =>{  // hàm đăng xuất khi click
+    localStorage.removeItem("account"); // xóa tài khoản khỏi localStorage
+    window.location.reload() // và tải lại trình duyệt
   }
+
   console.log("OK");
   SetData();
   useEffect(() =>{

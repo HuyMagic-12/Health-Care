@@ -7,7 +7,7 @@ import Modal from "./component/modal"
 
 
 function App() {
-  const [showAdmin, setShowAdmin] = useState(localStorage.getItem("account") || false)
+  const [showAdmin, setShowAdmin] = useState(localStorage.getItem("account") || false) // thông qua localStorage để xem người dùng đăng nhập hay chưa
   const loginSuccess = () => {
     setShowAdmin(true)
   }
