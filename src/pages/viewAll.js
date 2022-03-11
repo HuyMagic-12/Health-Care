@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const ArrayViewAll = (props) => {
   const arryViewAll = [];
+
   if (props.dataUser) {
       const user = props.dataUser[props.idViewAll];
       arryViewAll.push(

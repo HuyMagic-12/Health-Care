@@ -60,7 +60,7 @@ const Header = (props) => {
 
   const handleSymptom = () => { window.scrollTo({top:1000, behavior:"smooth"})}
   const handleCaMac =() => {window.scrollTo({top:2000, behavior:"smooth"})}
-  const handleNews =() => {window.scrollTo({top:2000, behavior:"smooth"})}
+  const handleNews =() => {window.scrollTo({top:2500, behavior:"smooth"})}
 
   return (
     <div className="header">

@@ -5,13 +5,12 @@ import ViewAll from "./viewAll";
 import Web3 from "web3/dist/web3.min.js";
 import SimpleStorage from "../contracts/SimpleStorage_abi.json";
 import "../assets/main.css";
-window.Web3 = Web3;
+window.Web3 = Web3; 
 window.web3 = new Web3(window.ethereum);
 // import connection from "../connection";
 const RowUser = (props) => {
   const data = [];
-  // const data_user = await props.dataUser
-  if (props.dataUser) {
+  if (props.dataUser) { // một cái mảng được khai báo chứa danh sách người tiêm vaccine nếu đã tiêm thì sẽ hiển thị ra
     for (let i = 0; i < props.dataUser.length; i++) {
       const user = props.dataUser[i];
       data.push(
@@ -56,7 +55,7 @@ const RowUser = (props) => {
     }
   }
 
-  return props.dataUser ? data : <></>;
+  return props.dataUser ? data : <></>; 
 };
 
 const Admin = () => {
@@ -200,8 +199,7 @@ const Admin = () => {
             </form>
             <div className="nav">
               <ul className="nav-center">
-                <li>BIỂU ĐỒ</li>
-                <li>THÔNG TIN KHÁCH HÀNG</li>
+                <li>THÔNG TIN</li>
               </ul>
             </div>
           </div>
@@ -211,8 +209,6 @@ const Admin = () => {
               onClick={handleCloseModel}
               id="closeModel" 
               ></lottie-player>
-              
-              <h3 className="model-word">Đăng Nhập Bằng User</h3>
                 <h3 className="model-word" onClick={handleCloseControl}>Tắt Bảng Điều Khiển</h3>
                 <h3 className="model-word" onClick={handleOpenControl}>Bật Bảng Điều Khiển</h3>
                 <h3 className="model-word" onClick={handleLogout}>Đăng Xuất</h3>
