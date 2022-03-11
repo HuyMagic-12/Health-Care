@@ -5,5 +5,9 @@ Dự án tiêm vaccine Covid
 - `npm i`
 - npm start
 
+## Link github
+
+- https://github.com/HuyMagic-12/Health-Care.git
+
 
 
