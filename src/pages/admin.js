@@ -6,7 +6,7 @@ import Web3 from "web3/dist/web3.min.js";
 import SimpleStorage from "../contracts/SimpleStorage_abi.json";
 import "../assets/main.css";
 window.Web3 = Web3; 
-window.web3 = new Web3(window.ethereum);
+window.web3 = new Web3(window.ethereum);  //Khởi tạo web3
 // import connection from "../connection";
 const RowUser = (props) => {
   const data = [];
@@ -97,7 +97,7 @@ const Admin = () => {
     modelLeft.style.transition = `all 0.5s linear`
   }
 
-  const HandleViewAll = useCallback((element) => {
+  const HandleViewAll = useCallback((element) => {  
     const contentTable__None = document.querySelector(".content-blockchain");
     contentTable__None.style.display = `none`;
     setCheckViewAll(!checkViewAll);
@@ -119,48 +119,48 @@ const Admin = () => {
     setIdViewAll(idUser);
   });
 
-  async function loadListUser() {
-    if (connection) {
-      const countPeople = await connection.methods.countPeople().call();
-      const dataUser = [];
-      for (let i = 0; i < countPeople; i++) {
-        const people = await connection.methods.listPeople(i).call();
-        dataUser.push(people);
+  async function loadListUser() {   // hàm láy toàn bộ hồ sơ
+    if (connection) { // nếu tồn tại connection
+      const countPeople = await connection.methods.countPeople().call();// đếm số lượng hồ sơ trong smark contract
+      const dataUser = [];  
+      for (let i = 0; i < countPeople; i++) { // duyệt tất cả hồ sơ 
+        const people = await connection.methods.listPeople(i).call(); 
+        dataUser.push(people);  // đẩy hồ sơ vào mảng mới
       }
       setDataUser(dataUser);
     }
     // props.setDataUser(dataUser)
   }
-  async function search() {
-    const dataSearch = await connection.methods.search(searchInput).call()
-    const dataNew = [];
-    for(let i = 0; i < dataSearch.length; i++){
-      if(dataSearch[i].injected !== "0"){
-        dataNew.push(dataSearch[i])
+
+  async function search() { // hàm tìm kiếm
+    const dataSearch = await connection.methods.search(searchInput).call()  // gọi hàm tìm kiếm
+    const dataNew = []; // tọa mảng []
+    for(let i = 0; i < dataSearch.length; i++){ // duyệt kết quả của tìm kiếm
+      if(dataSearch[i].injected !== "0"){ // dựa vào số mũi tiêm trên hồ sơ để kiểm tra xem có rỗng hay k
+        dataNew.push(dataSearch[i]) // thêm mảng mảng nếu hồ sơ không rỗng
       }
     }
-    console.log(dataNew);
-    setDataUser(dataNew);
+    setDataUser(dataNew); //set kết quả của mảng dataNew cho DataUser
   }
 
-  // gọi 
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    if(searchInput){
+  // tạo event khi mà người dùng thực hiện tìm kiếm
+  const handleSubmit = (e) =>{  
+    e.preventDefault(); // hủy các event mặc định của form
+    if(searchInput){  // nếu ô tìm kiếm khác rỗng thì thực hiện hàm search
       search()
     }
-    else{
+    else{ // ngược lấyy toàn bộ hồ sơ
       loadListUser()
     }
   }
 
-  const addressConstract = process.env.REACT_APP_ADDRESS_SMART_CONTRACT;
-  async function SetData() {
-    if (!connection) {
-      await window.ethereum.enable();
+  const addressConstract = process.env.REACT_APP_ADDRESS_SMART_CONTRACT; // lấy địa chỉ smask contract trong biến môi trường
+  async function SetData() {  //hàm dùng để khỏi tạo set biến connection
+    if (!connection) {  // kiểm tra biến connection đã khởi tạo chưa
+      await window.ethereum.enable(); // đợi metamask hoạt động trên website
       // eslint-disable-next-line no-undef
-      const covac = new web3.eth.Contract(SimpleStorage, addressConstract);
-      setConnection(covac);
+      const covac = new web3.eth.Contract(SimpleStorage, addressConstract); // khởi tạo kết nối với smark contract thông qua abi và địa chỉ  smark contract
+      setConnection(covac); // ghi kết nối smark contract vào state Connection
     }
   }
 

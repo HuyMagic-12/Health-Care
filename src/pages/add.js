@@ -89,9 +89,9 @@ const Adds = (props) => {
     props.setCheckAdd(!props.checkAdd);
   }
   
-  const handleClick = async () => {
-    setIsShowModalLoading(true)
-    const data = props.connection.methods
+  const handleClick = async () => { // hàm add
+    setIsShowModalLoading(true) // set modal loading lên
+    const data = props.connection.methods // thực hiện add
       .Add({
         name: `${nameUser}`,
         birthDay: `${birthDay}`,
@@ -105,23 +105,25 @@ const Adds = (props) => {
         injected: `${injected}`,
         datavacin,
       })
-      .send({ from: localStorage.getItem("account") })
-      .once("receipt", (receipt) => {
+      .send({ from: localStorage.getItem("account") })  // lấy account trong localStorage ra
+      .once("receipt", (receipt) => { // khi mà thực hiện xong 
         const contentTable__None = document.querySelector(".content-blockchain");
         contentTable__None.style.display = `block`;
         props.setCheckAdd(!props.checkAdd);
         console.log(receipt);
       });
     data
-      .then((res) => {
+      .then((res) => {  //khi mà thực hiện xong
         props.loadListUser()
       })
-      .catch((e) => {
+      .catch((e) => { // nếu sai thực hiện
         setIsShowModalLoading(false)
         setIsShowModalError(true)
         // Handle error
       });
   };
+
+
 
   const addRadios = [
     {
@@ -305,7 +307,8 @@ const Adds = (props) => {
           </div>
         </form>
       </div>
-      {isShowModalError && <Modal>
+      {/*khi mình từ chối hiện form này trong metamask  */}
+      {isShowModalError && <Modal> 
         <h1 style={{margin:"10px 0"}}>Có lỗi từ metamask</h1>
           <lottie-player
             src="https://assets6.lottiefiles.com/packages/lf20_suhe7qtm.json"
@@ -314,6 +317,7 @@ const Adds = (props) => {
             style={{ width: "200px", margin:"auto" }}
           ></lottie-player>
       </Modal>}
+      {/*khi mình đồng ý hiện form này trong metamask  */}
       {isShowModalLoading && <Modal>
         <h1 style={{margin:"10px 0"}}>Đang đợi phê duyệt từ metamask</h1>
           <lottie-player

@@ -93,28 +93,30 @@ const Edits = (props) => {
     props.setCheckEdits(!props.checkEdits);
   }
 
-  const handleClick = async () => {
+  const handleClick = async () => { 
 
-    setIsShowModalLoading(true)
-    const data = props.connection.methods
-      .edit(dataInput, props.idViewAll)
+    setIsShowModalLoading(true) // hiện modal đang thực hiện
+    const data = props.connection.methods //
+      .edit(dataInput, props.idViewAll) 
       .send({ from: localStorage.getItem("account") })
       .once("receipt", (receipt) => {
         console.log(receipt);
         const contentTable__None = document.querySelector(".content-blockchain");
         contentTable__None.style.display = `block`;
         props.setCheckEdits(!props.checkEdits);
-      });
-    data
-      .then((res) => {
+      }); // gọi hàm edits trên smark contract
+
+
+    data  
+      .then((res) => {  // nếu thực hiện xong thì gọi loadListUser từ admin
         props.loadListUser()
       })
-      .catch((e) => {
+      .catch((e) => { // nếu lỗi thực hiện cách àm trong này
         setIsShowModalLoading(false)
         setIsShowModalError(true)
         // Handle error
       });
-  };
+  };  
 
   const addRadios = [
     {
@@ -131,17 +133,18 @@ const Edits = (props) => {
     }
   ]
   
-  const fetchData = async () => {
-    const datavacin = await props.connection.methods.listPeople(props.idViewAll).call()
+  const fetchData = async () => { //dùng để lấy edit từ smark contrack
+    const datavacin = await props.connection.methods.listPeople(props.idViewAll).call() // dự vào props.idViewAll để lấy dữ liệu hồ sơ
     const data = {}
-    for(let key in dataInput){
+    for(let key in dataInput){  // đổ dữ liệu ở datavacin qua data dựa vào state dataInput
       data[key] = datavacin[key]
     }
+
     data.datavacin = {}
-    for(let key in dataInput.datavacin){
+    for(let key in dataInput.datavacin){  // đổ dữ liệu ở datavacin qua data.datavacin dựa vào state dataInput.datavacin
       data.datavacin[key] = datavacin.datavacin[key]
     }
-    setDataInput(data)
+    setDataInput(data) // set State dataInput
   }
   useEffect(() => {
     if(props.idViewAll){
